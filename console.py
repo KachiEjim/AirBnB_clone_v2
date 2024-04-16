@@ -117,7 +117,9 @@ class HBNBCommand(cmd.Cmd):
         line = args.split(" ")
         classname = line[1]
         lines = line[2:]
-        do_create()
+        self.do_create(classname)
+
+
 
       
 
