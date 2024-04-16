@@ -114,24 +114,32 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def createWithParam(self, args):
-        line = args.split(" ")
-        classname = line[1]
-        lines = line[2:]
-        do_create()
+        
+        classname = args[0]
+        lines = args[1:]
+        self.do_create(classname)
+
+        for line in lines:
+            line = line.split("=")
+
+            
+
 
       
-
-
     def do_create(self, args):
         """ Create an object of any class"""
-        print(args)
+
+
+
         if not args:
             print("** class name missing **")
             return
-        elif args not in HBNBCommand.classes:
+        line = args.split(" ")
+        classname = line[0]
+        if classname not in HBNBCommand.classes:
             print("** class doesn't exist **")
             return
-        elif len(args) > 2:
+        elif len(args) > 1:
             pass
   
 
