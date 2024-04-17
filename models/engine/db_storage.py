@@ -23,8 +23,8 @@ class DBStorage:
         mysql_host = getenv('HBNB_MYSQL_HOST', 'localhost')
         mysql_db = getenv('HBNB_MYSQL_DB')
 
-        loginStr = f"mysql+mysqldb://{mysql_user}:{mysql_pwd}@
-                    {mysql_host}/{mysql_db}"
+        loginStr = f"mysql+mysqldb://{mysql_user}:{mysql_pwd}@\
+            {mysql_host}/{mysql_db}"
         self.__engine = create_engine(loginStr, pool_pre_ping=True)
         if getenv('HBNB_ENV') == 'test':
             Base.metadata.drop_all(bind=self.__engine)
