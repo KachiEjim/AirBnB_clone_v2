@@ -20,7 +20,7 @@ class DBStorage:
     def __init__(self):
         mysql_user = getenv('HBNB_MYSQL_USER')
         mysql_pwd = getenv('HBNB_MYSQL_PWD')
-        mysql_host = getenv('HBNB_MYSQL_HOST', 'localhost')
+        mysql_host = getenv('HBNB_MYSQL_HOST', default='localhost')
         mysql_db = getenv('HBNB_MYSQL_DB')
 
         loginStr = f"mysql+mysqldb://{mysql_user}:{mysql_pwd}@\
