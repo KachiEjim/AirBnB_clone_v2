@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-""" Test delete features
+""" Test delete feature
 """
-from models.engine.file_storage import filestorage
-from models.state.import state
+from models.engine.file_storage import FileStorage
+from models.state import State
 
-fs =fileStorage()
+fs = FileStorage()
 
 # All States
 all_states = fs.all(State)
@@ -26,8 +26,8 @@ for state_key in all_states.keys():
     print(all_states[state_key])
 
 # Create another State
-another_state =State()
-another_state.name = "Naveda"
+another_state = State()
+another_state.name = "Nevada"
 fs.new(another_state)
 fs.save()
 print("Another State: {}".format(another_state))
@@ -36,7 +36,7 @@ print("Another State: {}".format(another_state))
 all_states = fs.all(State)
 print("All States: {}".format(len(all_states.keys())))
 for state_key in all_states.keys():
-    print(all_states[state_key])
+    print(all_states[state_key])        
 
 # Delete the new State
 fs.delete(new_state)
