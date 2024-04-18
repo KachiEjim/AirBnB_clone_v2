@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """ holds class User"""
-from models import storage
 from models.base_model import BaseModel, Base
 from os import getenv
 import sqlalchemy
