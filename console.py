@@ -231,7 +231,8 @@ class HBNBCommand(cmd.Cmd):
                 if k.split('.')[0] == args:
                     print_list.append(str(v))
         else:
-            for k, v in storage._FileStorage__objects.items():
+            items = storage.all()
+            for k, v in items.items():
                 print_list.append(str(v))
 
         print(print_list)
