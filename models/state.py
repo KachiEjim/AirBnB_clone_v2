@@ -20,8 +20,8 @@ class State(BaseModel, Base):
         state_id equals to the current State.id"""
         result = []
         from models import storage
-        cities = storage.all(City)
-        for city in cities.values():
+        temp = storage.all(City)
+        for city in temp.values():
             if city.state_id == self.id:
-                result.append(city)
+                result.extend(city)
         return result
