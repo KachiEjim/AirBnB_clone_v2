@@ -26,9 +26,9 @@ class DBStorage:
         hbnb_dev_pwd = os.getenv('HBNB_MYSQL_PWD')
         hbnb_dev_host = os.getenv('HBNB_MYSQL_HOST')        
 
-        self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'
-                                      .format(hbnb_dev_user, hbnb_dev_pwd,
-                                              hbnb_dev_host, hbnb_dev_db),
+        self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'\
+                                      .format(hbnb_dev_user, hbnb_dev_pwd,\
+                                              hbnb_dev_host, hbnb_dev_db),\
                                       pool_pre_ping=True)
 
         Session = sessionmaker(bind=self.__engine, expire_on_commit=False)
