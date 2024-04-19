@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """database storage engine"""
-import os
+from os import getenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from models.base_model import BaseModel, Base
@@ -20,20 +20,18 @@ class DBStorage:
 
     def __init__(self):
         """initilazes DBstorage Class"""
-        hbnb_dev = os.getenv('HBNB_ENV')
-        hbnb_dev_db = os.getenv('HBNB_MYSQL_DB')
-        hbnb_dev_user = os.getenv('HBNB_MYSQL_USER')
-        hbnb_dev_pwd = os.getenv('HBNB_MYSQL_PWD')
-        hbnb_dev_host = os.getenv('HBNB_MYSQL_HOST')        
+        hbnb_dev_user = getenv('HBNB_MYSQL_USER')
+        hbnb_dev_pwd = getenv('HBNB_MYSQL_PWD')
+        hbnb_dev_host = getenv('HBNB_MYSQL_HOST')   
+        hbnb_dev_db = getenv('HBNB_MYSQL_DB')
+    
 
         self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'\
                                       .format(hbnb_dev_user, hbnb_dev_pwd,\
                                               hbnb_dev_host, hbnb_dev_db),\
                                       pool_pre_ping=True)
 
-        Session = sessionmaker(bind=self.__engine, expire_on_commit=False)
-        self.__session = scoped_session(Session())
-        if os.getenv('HBNB_ENV') == 'test':
+        if getenv('HBNB_ENV') == 'test':
             Base.metadata.drop_all(bind=self.__engine)
 
     def all(self, cls=None):
