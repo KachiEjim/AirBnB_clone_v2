@@ -39,7 +39,7 @@ class DBStorage:
         depending of the class name (argument cls)"""
         objs_dict = {}
         if cls is None:
-            tables_list = [State, City, User, Place, Review, Amenity]
+            tables_list = [State, City]
 
         else:
             if isinstance(cls, str):
