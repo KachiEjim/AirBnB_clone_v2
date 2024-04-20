@@ -60,13 +60,7 @@ class DBStorage:
         """add the object to the current
         database session (self.__session)"""
         if obj is not None:
-            try:
-                self.__session.add(obj)
-                self.__session.flush()
-                self.__session.refresh(obj)
-            except Exception as a:
-                self.__session.rollback()
-                raise a
+            self.__session.add(obj)
     
     def save(self):
         '''commit all changes of the current db session'''
@@ -82,9 +76,8 @@ class DBStorage:
         Base.metadata.create_all(self.__engine)
         Session_maker = sessionmaker(bind=self.__engine,
                                      expire_on_commit=False)
-        self.__session = scoped_session(Session_maker)()
-
-
+        session = scoped_session(Session_maker)
+        self.__session = session()
 
     def close(self):
         """closes the working SQLAlchemy session"""
