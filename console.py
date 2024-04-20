@@ -113,50 +113,49 @@ class HBNBCommand(cmd.Cmd):
         """ Overrides the emptyline method of CMD """
         pass
 
- def do_create(self, args):
-    """ Create an object of any class"""
-    if not args:
-        print("** class name missing **")
-        return
+    def do_create(self, args):
+        """ Create an object of any class"""
+        if not args:
+            print("** class name missing **")
+            return
     
-    # Split the arguments by whitespace
-    args = args.split()
-    cls = args.pop(0)  # Remove the class name from args
-    if cls not in HBNBCommand.classes:
-        print("** class doesn't exist **")
-        return
+        # Split the arguments by whitespace
+        args = args.split()
+        cls = args.pop(0)  # Remove the class name from args
+        if cls not in HBNBCommand.classes:
+            print("** class doesn't exist **")
+            return
     
-    instance = HBNBCommand.classes[cls]()
-    param = {}
-    for i in args:
-        pair = i.split("=")
-        key = pair[0]
-        # Reconstruct the value from the split parts
-        val = '='.join(pair[1:])
-        # Handle the value syntax
-        if val.startswith('"') and val.endswith('"'):
-            val = val[1:-1]  # Remove double quotes
-            val = val.replace('\\"', '"')  # Unescape double quotes
-            val = val.replace("_", " ")  # Replace underscores with spaces
-        else:
-            try:
-                # Try converting to float
-                val = float(val)
-                # Check if it's an integer
-                if val.is_integer():
-                    val = int(val)
-            except ValueError:
-                pass  # Leave value as string if it can't be converted
+        instance = HBNBCommand.classes[cls]()
+        param = {}
+        for i in args:
+            pair = i.split("=")
+            key = pair[0]
+            # Reconstruct the value from the split parts
+            val = '='.join(pair[1:])
+            # Handle the value syntax
+            if val.startswith('"') and val.endswith('"'):
+                val = val[1:-1]  # Remove double quotes
+                val = val.replace('\\"', '"')  # Unescape double quotes
+                val = val.replace("_", " ")  # Replace underscores with spaces
+            else:
+                try:
+                    # Try converting to float
+                    val = float(val)
+                    # Check if it's an integer
+                    if val.is_integer():
+                        val = int(val)
+                except ValueError:
+                    pass  # Leave value as string if it can't be converted
         
-        param[key] = val
+            param[key] = val
 
-    # Assign parameters to instance attributes
-    for key, val in param.items():
-        instance.__dict__[key] = val
+        # Assign parameters to instance attributes
+        for key, val in param.items():
+            instance.__dict__[key] = val
 
-    print(instance.id)
-    instance.save()
-
+        print(instance.id)
+        instance.save()
 
     def help_create(self):
         """ Help information for the create method """
