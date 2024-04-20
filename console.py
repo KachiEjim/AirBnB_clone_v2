@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 """ Console Module """
 import cmd
 import sys
@@ -10,7 +11,6 @@ from models.state import State
 from models.city import City
 from models.amenity import Amenity
 from models.review import Review
-
 
 class HBNBCommand(cmd.Cmd):
     """ Contains the functionality for the HBNB console"""
@@ -150,12 +150,11 @@ class HBNBCommand(cmd.Cmd):
         print(instance.id)
         instance.save()
 
+
     def help_create(self):
         """ Help information for the create method """
         print("Creates a class of any type")
-        print("[Usage]: create <className> <param 1> <param 2> <param 3>...\n")
-        print("the <param> syntax is <key name>=<value>")
-        print("String <value> should start with a double quote")
+        print("[Usage]: create <className>\n")
 
     def do_show(self, args):
         """ Method to show an individual object """
@@ -232,11 +231,12 @@ class HBNBCommand(cmd.Cmd):
             if args not in HBNBCommand.classes:
                 print("** class doesn't exist **")
                 return
-
-            for k, v in storage.all(eval(args)).items():
-                print_list.append(str(v))
-        else:
             for k, v in storage.all().items():
+                if k.split('.')[0] == args:
+                    print_list.append(str(v))
+        else:
+            items = storage.all()
+            for k, v in items.items():
                 print_list.append(str(v))
 
         print(print_list)
@@ -249,13 +249,13 @@ class HBNBCommand(cmd.Cmd):
     def do_count(self, args):
         """Count current number of class instances"""
         count = 0
-        for k, v in storage.all().items():
+        for k, v in storage._FileStorage__objects.items():
             if args == k.split('.')[0]:
                 count += 1
         print(count)
 
     def help_count(self):
-        """  """
+        """ """
         print("Usage: count <class_name>")
 
     def do_update(self, args):
@@ -290,7 +290,7 @@ class HBNBCommand(cmd.Cmd):
             return
 
         # first determine if kwargs or args
-        if '{' in args[2] and '}' in args[2] and type(eval(args[2])) is dict:
+        if '{' in args[2] and '}' in args[2] and type(eval(args[2])) == dict:
             kwargs = eval(args[2])
             args = []  # reformat kwargs into list, ex: [<name>, <value>, ...]
             for k, v in kwargs.items():
