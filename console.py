@@ -1,8 +1,6 @@
 #!/usr/bin/python3
 
 """ Console Module """
-import pdb
-pdb.set_trace()
 import cmd
 import sys
 from models.base_model import BaseModel
@@ -236,8 +234,6 @@ class HBNBCommand(cmd.Cmd):
         else:
             items = storage.all()
             for k, v in items.items():
-                if "_sa_instance_state" in v.items():
-                    del (v['_sa_instance_state'])
                 print_list.append(str(v))
 
         print(print_list)
