@@ -1,11 +1,15 @@
 #!/usr/bin/python3
 """ holds class User"""
-from models.base_model import BaseModel
-from os import getenv
-import sqlalchemy
+from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String
+from sqlalchemy.orm import relationship
 
 
-class User(BaseModel):
+class User(BaseModel, Base):
     """Representation of a user """
-    pass
+    __tablename__ = 'users'
+    email = Column(String(128), nullable=False)
+    password = Column(String(128), nullable=False)
+    first_name = Column(String(128))
+    last_name = Column(String(128))
+    places = relationship('Place', cascade='all, delete', backref='user')
