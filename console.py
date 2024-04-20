@@ -1,9 +1,8 @@
 #!/usr/bin/python3
 
 """ Console Module """
-import pdb
-pdb.set_trace()
 import cmd
+
 import sys
 from models.base_model import BaseModel
 from models.__init__ import storage
@@ -116,7 +115,6 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_create(self, line):
-        pdb.set_trace()
         """Usage: create <class> <key 1>=<value 2> <key 2>=<value 2> ...
         Create a new class instance with given keys/values and print its id.
         """
@@ -156,7 +154,6 @@ class HBNBCommand(cmd.Cmd):
         print("[Usage]: create <className>\n")
 
     def do_show(self, args):
-        pdb.set_trace()
         """ Method to show an individual object """
         new = args.partition(" ")
         c_name = new[0]
@@ -190,7 +187,6 @@ class HBNBCommand(cmd.Cmd):
         print("[Usage]: show <className> <objectId>\n")
 
     def do_destroy(self, args):
-        pdb.set_trace()
         """ Destroys a specified object """
         new = args.partition(" ")
         c_name = new[0]
@@ -224,7 +220,6 @@ class HBNBCommand(cmd.Cmd):
         print("[Usage]: destroy <className> <objectId>\n")
 
     def do_all(self, args):
-        pdb.set_trace()
         """ Shows all objects, or all objects of a class"""
         print_list = []
 
@@ -261,7 +256,6 @@ class HBNBCommand(cmd.Cmd):
         print("Usage: count <class_name>")
 
     def do_update(self, args):
-        pdb.set_trace()
         """ Updates a certain object with new info """
         c_name = c_id = att_name = att_val = kwargs = ''
 
