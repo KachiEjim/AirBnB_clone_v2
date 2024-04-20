@@ -132,17 +132,12 @@ class HBNBCommand(cmd.Cmd):
 
         for key, val in param.items():
             try:
-                if key in HBNBCommand.types.keys():
-                    if key in ['latitude', 'longitude']:
-                        if type(val) is not float:
-                            continue
-                    else:
-                        if type(val) is not int:
-                            continue
-                if type(val) is str:
+                if '.' in val:
+                    val = float(val)
+                elif val.isnumeric():
+                    val = int(val)
+                else:
                     val = val.replace("_", " ")
-                elif type(val) not in [int, float]:
-                    continue
                 instance.__dict__[key] = val
             except Exception:
                 continue
