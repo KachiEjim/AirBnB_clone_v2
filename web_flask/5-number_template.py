@@ -81,7 +81,7 @@ def show_number(n):
 
 
 @app.route('/number/<int:n>', strict_slashes=False)
-def show_number(n):
+def view_number(n):
     """
     This function is the route for the
     '/number/<n>' endpoint of the Flask application.
