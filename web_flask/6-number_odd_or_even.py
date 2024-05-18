@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """a script that starts a Flask web application
 listening on 0.0.0.0, port 5000"""
-from flask import Flask
+from flask import Flask, render_template
 
 
 app = Flask(__name__)
@@ -108,7 +108,7 @@ def number_odd_or_even(n):
         str: HTML content indicating whether 'n' is odd or even.
     """
     x = "even" if n % 2 == 0 else "odd"
-    return f"<html><body><h1>Number: {n} is {x}</h1></body></html>"
+    return render_template('6-number_odd_or_even.html', n=n, x=x)
 
 
 if __name__ == "__main__":

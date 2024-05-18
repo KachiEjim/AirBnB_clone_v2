@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """a script that starts a Flask web application
 listening on 0.0.0.0, port 5000"""
-from flask import Flask
+from flask import Flask, render_template
 
 
 app = Flask(__name__)
@@ -93,7 +93,7 @@ def show_number(n):
         H1 tag: “Number: n” inside the tag BODY
     """
 
-    return f"<h1>Number: {n}</h1>"
+    return render_template('5-number.html', n=n)
 
 
 if __name__ == "__main__":
