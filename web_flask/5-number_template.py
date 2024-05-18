@@ -65,7 +65,7 @@ def python(text):
 
 
 @app.route('/number/<int:n>', strict_slashes=False)
-def show_number(n):
+def view_number4(n):
     """
     This function is the route for the
     '/number/<n>' endpoint of the Flask application.
@@ -80,8 +80,8 @@ def show_number(n):
     return f"{n} is a number"
 
 
-@app.route('/number/<int:n>', strict_slashes=False)
-def view_number(n):
+@app.route('/number_template/<int:n>', strict_slashes=False)
+def view_number5(n):
     """
     This function is the route for the
     '/number/<n>' endpoint of the Flask application.
@@ -92,7 +92,6 @@ def view_number(n):
     Returns:
         H1 tag: “Number: n” inside the tag BODY
     """
-
     return render_template('5-number.html', n=n)
 
 
