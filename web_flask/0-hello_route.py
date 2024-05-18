@@ -1,21 +1,15 @@
 #!/usr/bin/python3
-""" a script that starts a Flask web application"""
+""" module doc """
 from flask import Flask
-
 
 app = Flask(__name__)
 
 
-@app.route('/', strict_slashes=False)
-def index():
-    """
-    This function is the home route of the Flask application.
-
-    Returns:
-        str: The string "Hello HBNB!" as the response to the home route.
-    """
+@app.route("/", strict_slashes=False)
+def hello():
+    """ def doc """
     return "Hello HBNB!"
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host="0.0.0.0", port=5000)
