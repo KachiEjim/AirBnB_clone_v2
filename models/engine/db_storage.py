@@ -12,7 +12,6 @@ from models.place import Place
 from models.review import Review
 
 
-
 class DBStorage:
     """Defines DB storage class"""
     __engine = None
@@ -22,14 +21,15 @@ class DBStorage:
         """initilazes DBstorage Class"""
         hbnb_dev_user = getenv('HBNB_MYSQL_USER')
         hbnb_dev_pwd = getenv('HBNB_MYSQL_PWD')
-        hbnb_dev_host = getenv('HBNB_MYSQL_HOST')   
+        hbnb_dev_host = getenv('HBNB_MYSQL_HOST')
         hbnb_dev_db = getenv('HBNB_MYSQL_DB')
-    
 
-        self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'\
-                                      .format(hbnb_dev_user, hbnb_dev_pwd,\
-                                              hbnb_dev_host, hbnb_dev_db),\
-                                      pool_pre_ping=True)
+        self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'
+                                      .format(hbnb_dev_user,
+                                              hbnb_dev_pwd,
+                                              hbnb_dev_host,
+                                              hbnb_dev_db
+                                              ), pool_pre_ping=True)
 
         if getenv('HBNB_ENV') == 'test':
             Base.metadata.drop_all(bind=self.__engine)
@@ -61,7 +61,7 @@ class DBStorage:
         database session (self.__session)"""
 
         self.__session.add(obj)
-    
+
     def save(self):
         '''commit all changes of the current db session'''
         self.__session.commit()

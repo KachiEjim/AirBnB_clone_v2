@@ -66,8 +66,10 @@ class Place(BaseModel, Base):
 
         @property
         def amenities(self):
-            """getter attribute amenities that returns the list of Amenity
-            instances based on the attribute amenity_ids that contains all
+            """getter attribute amenitiest
+            that returns the list of Amenity
+            instances based on the attribute
+            amenity_ids that contains all
             Amenity.id linked to the Place"""
             from models import storage
             from models.amenity import Amenity
@@ -79,7 +81,8 @@ class Place(BaseModel, Base):
 
         @amenities.setter
         def amenities(self, obj):
-            """setter attribute amenities that handles append method for adding"""
+            """setter attribute amenities that handles
+            append method for adding"""
             from models.amenity import Amenity
-            if type(obj) == type(Amenity):
+            if obj.isinstance(Amenity):
                 self.amenity_ids.append(obj.id)
