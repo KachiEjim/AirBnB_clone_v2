@@ -92,6 +92,7 @@ def show_number(n):
     Returns:
         H1 tag: “Number: n” inside the tag BODY
     """
+
     return f"<h1>Number: {n}</h1>"
 
 
