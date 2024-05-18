@@ -1,6 +1,0 @@
-v = 'some "text" with "quotes"'
-if '"' in v:
-    v = v.replace('"', '\\"')
-print(v)
-
-
