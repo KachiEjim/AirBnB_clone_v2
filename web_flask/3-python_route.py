@@ -32,13 +32,15 @@ def hbnb():
 @app.route('/c/<text>', strict_slashes=False)
 def c(text):
     """
-        This function is the route for the '/c/<text>' endpoint of the Flask application.
+        This function is the route for the '/c/<text>'
+        endpoint of the Flask application.
 
         Parameters:
             text (str): The text parameter extracted from the URL.
 
         Returns:
-            str: The string "C " concatenated with the text parameter after replacing underscores with spaces.
+            str: The string "C " concatenated with the text
+            parameter after replacing underscores with spaces.
     """
     return "C " + text.replace("_", " ")
 
@@ -47,13 +49,16 @@ def c(text):
 @app.route('/python/<text>', strict_slashes=False)
 def python(text):
     """
-    This function is the route for the '/python/' and '/python/<text>' endpoints of the Flask application.
+    This function is the route for the '/python/' and
+    '/python/<text>' endpoints of the Flask application.
 
     Parameters:
-        text (str): The text parameter extracted from the URL. Defaults to 'is cool' if not provided.
+        text (str): The text parameter extracted from
+        the URL. Defaults to 'is cool' if not provided.
 
     Returns:
-        str: The string "Python " concatenated with the text parameter after replacing underscores with spaces.
+        str: The string "Python " concatenated with the
+        text parameter after replacing underscores with spaces.
     """
     return "Python " + text.replace('_', ' ')
 

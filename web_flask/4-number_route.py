@@ -13,7 +13,8 @@ def index():
     This function is the home route of the Flask application.
 
     Returns:
-        str: The string "Hello HBNB!" as the response to the home route.
+        str: The string "Hello HBNB!" as the response
+        to the home route.
     """
     return "Hello HBNB!"
 
@@ -32,13 +33,15 @@ def hbnb():
 @app.route('/c/<text>', strict_slashes=False)
 def c(text):
     """
-        This function is the route for the '/c/<text>' endpoint of the Flask application.
+        This function is the route for the '/c/<text>'
+        endpoint of the Flask application.
 
         Parameters:
             text (str): The text parameter extracted from the URL.
 
         Returns:
-            str: The string "C " concatenated with the text parameter after replacing underscores with spaces.
+            str: The string "C " concatenated with the
+            text parameter after replacing underscores with spaces.
     """
     return "C " + text.replace("_", " ")
 
@@ -47,13 +50,16 @@ def c(text):
 @app.route('/python/<text>', strict_slashes=False)
 def python(text):
     """
-    This function is the route for the '/python/' and '/python/<text>' endpoints of the Flask application.
+    This function is the route for the '/python/' and
+    '/python/<text>' endpoints of the Flask application.
 
     Parameters:
-        text (str): The text parameter extracted from the URL. Defaults to 'is cool' if not provided.
+        text (str): The text parameter extracted
+        from the URL. Defaults to 'is cool' if not provided.
 
     Returns:
-        str: The string "Python " concatenated with the text parameter after replacing underscores with spaces.
+        str: The string "Python " concatenated
+        with the text parameter after replacing underscores with spaces.
     """
     return "Python " + text.replace('_', ' ')
 
@@ -61,13 +67,15 @@ def python(text):
 @app.route('/number/<n>', strict_slashes=False)
 def show_number(n):
     """
-    This function is the route for the '/number/<n>' endpoint of the Flask application.
+    This function is the route for the
+    '/number/<n>' endpoint of the Flask application.
 
     Parameters:
         n (str): The n parameter extracted from the URL.
 
     Returns:
-        str: The string "{n} is a number" if n is a valid number, otherwise None.
+        str: The string "{n} is a number"
+        if n is a valid number, otherwise None.
     """
     if n.isdigit():
         return f"{n} is a number"
