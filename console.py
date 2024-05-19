@@ -12,6 +12,7 @@ from models.city import City
 from models.amenity import Amenity
 from models.review import Review
 
+
 class HBNBCommand(cmd.Cmd):
     """ Contains the functionality for the HBNB console"""
 
@@ -118,14 +119,14 @@ class HBNBCommand(cmd.Cmd):
         if not args:
             print("** class name missing **")
             return
-    
+
         # Split the arguments by whitespace
         args = args.split()
         cls = args.pop(0)  # Remove the class name from args
         if cls not in HBNBCommand.classes:
             print("** class doesn't exist **")
             return
-    
+
         instance = HBNBCommand.classes[cls]()
         param = {}
         for i in args:
@@ -147,9 +148,8 @@ class HBNBCommand(cmd.Cmd):
                         val = int(val)
                 except ValueError:
                     pass  # Leave value as string if it can't be converted
-        
-            param[key] = val
 
+            param[key] = val
         # Assign parameters to instance attributes
         for key, val in param.items():
             instance.__dict__[key] = val
