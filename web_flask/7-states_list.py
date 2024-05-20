@@ -68,7 +68,7 @@ def states_list():
     list_states.sort(key=lambda x: x.name)
     for i in range(len(list_states)):
 
-        print(list_states[i].name )
+        print(list_states[i])
     #return render_template('7-states_list.html', states=list_states)
 
 
