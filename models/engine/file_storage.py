@@ -60,7 +60,7 @@ class FileStorage:
         """Delects obj from __objects"""
         if obj is not None:
             if obj in FileStorage.__objects.values():
-                key = f"{obj.to_dict()['__class__']}.{obj.id}"
+                key = "{}.{}".format(obj.to_dict()['__class__'], obj.id)
                 del (FileStorage.__objects[key])
 
     def close(self):
