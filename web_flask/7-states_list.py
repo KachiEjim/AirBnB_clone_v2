@@ -62,7 +62,8 @@ def states_list():
     """ Renders a template that lists states
     retrieved from the storage. """
     states = storage.all(State)
-    list_states = sorted(states.values())
+    list_states = sorted(states.values()
+                         , key=lambda state: state.name)
     return render_template('7-states_list.html', states=list_states)
 
 
