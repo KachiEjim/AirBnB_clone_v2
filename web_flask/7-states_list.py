@@ -66,7 +66,8 @@ def states_list():
     for state in states.values():
         list_states.append(state)
     list_states.sort(key=lambda x: x.name)
-    return render_template('7-states_list.html', states=list_states)
+    print(name for name in list_states )
+    #return render_template('7-states_list.html', states=list_states)
 
 
 @app.teardown_appcontext
