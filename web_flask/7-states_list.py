@@ -1,5 +1,8 @@
 #!/usr/bin/python3
-""" module doc """
+""" moduleThis module provides utility 
+functions for mathematical operations such as
+addition, subtraction, multiplication, and division.
+""" 
 from flask import Flask
 from flask import render_template
 from models import storage
