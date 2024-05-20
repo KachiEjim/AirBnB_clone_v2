@@ -1,7 +1,9 @@
 #!/usr/bin/python3
-""" module doc """
-from flask import Flask
-from flask import render_template
+""" module doc for a  web application must 
+be listening on 0.0.0.0, port 5000
+and must have /states_list route to display a HTML page """
+
+from flask import Flask, render_template
 from models import storage
 from models.state import State
 
