@@ -62,7 +62,7 @@ def states_list():
     """ Renders a template that lists states
     retrieved from the storage. """
     states = storage.all(State)
-    return render_template('7-states_list.html', states=states.copy())
+    return render_template('7-states_list.html', states=states)
 
 
 @app.teardown_appcontext
