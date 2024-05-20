@@ -1,1 +1,1 @@
-"""Doc for package"""
+"""Doc for package and module"""
