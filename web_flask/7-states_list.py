@@ -63,6 +63,7 @@ def states_list():
     retrieved from the storage. """
     states = storage.all(State)
     list_states = []
+    print(states.values())
     for state in states.values():
         list_states.append(state)
     list_states.sort(key=lambda x: x.name)
