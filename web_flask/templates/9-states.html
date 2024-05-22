@@ -16,7 +16,7 @@
 
         </UL>
 
-        {{% elif id == 'Found' %}}
+        {% elif id == 'Found' %}
         <H1>State: {{ state.name }}</H1>
         <H3>Cities:</H3>
         <UL>
@@ -27,11 +27,11 @@
 
         </UL>
     
-        {{% else %}}
+        {% else %}
 
             <H1>State not found!</H1>
 
-        {{% endif %}}
+        {% endif %}
 
     </BODY>
 </HTML>
