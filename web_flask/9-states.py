@@ -67,7 +67,7 @@ def cities_by_states():
 @app.route('/states', strict_slashes=False)
 def states(id):
     """ a script that starts a Flask web application:"""
-    states = storage.all()
+    states = storage.all(State)
     if id:
         for state in states.values():
             if state.id == id:
