@@ -76,13 +76,6 @@ def states(id):
                 return render_template('9-states.html', state=state, id='Not_Found')
     return render_template('9-states.html', states=states, id='None')
 
-
-@app.route('/states/<id>', strict_slashes=False)
-def states_(id):
-    """ a script that starts a Flask web application:"""
-    states = storage.all()
-    return render_template('9-states.html', states=states, id='None')
-
 @app.teardown_appcontext
 def close(error):
     """ def doc """
