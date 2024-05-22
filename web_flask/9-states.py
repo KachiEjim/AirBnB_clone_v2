@@ -69,7 +69,8 @@ def states_route(id=None):
     """ A script that starts a Flask web application. """
     states = storage.all(State)
     if id:
-        state = next((state for state in states.values() if state.id == id), None)
+        state = next((state for state in states.values()
+                      if state.id == id), None)
         if state:
             return render_template('9-states.html', state=state, id='Found')
         else:
