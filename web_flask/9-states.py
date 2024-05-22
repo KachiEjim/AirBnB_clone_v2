@@ -63,18 +63,20 @@ def cities_by_states():
     return render_template('8-cities_by_states.html', states=states)
 
 
-@app.route('/states/<id>', strict_slashes=False)
 @app.route('/states', strict_slashes=False)
-def states(id):
-    """ a script that starts a Flask web application:"""
+@app.route('/states/<id>', strict_slashes=False)
+def states_route(id=None):
+    """ A script that starts a Flask web application. """
     states = storage.all(State)
     if id:
-        for state in states.values():
-            if state.id == id:
-                return render_template('9-states.html', state=state, id='Found')
-            else:
-                return render_template('9-states.html', state=state, id='Not_Found')
-    return render_template('9-states.html', states=states, id='None')
+        state = next((state for state in states.values() if state.id == id), None)
+        if state:
+            return render_template('9-states.html', state=state, id='Found')
+        else:
+            return render_template('9-states.html', state=None, id='Not_Found')
+    else:
+        return render_template('9-states.html', states=states, id='None')
+
 
 @app.teardown_appcontext
 def close(error):
